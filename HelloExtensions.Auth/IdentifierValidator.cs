@@ -11,6 +11,6 @@ namespace HelloExtensions.Auth
             id != Guid.Empty && IsIdentidierExists(id);
 
         public static bool IsValidIdentifier(Guid? id) =>
-            id.HasValue && IsValidIdentifier(id.Value);
+            !(id is null) && IsValidIdentifier(id.Value);
     }
 }
