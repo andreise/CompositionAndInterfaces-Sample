@@ -31,7 +31,7 @@
         }
 
         public static bool IsValidToken(byte[] token) =>
-            token != null &&
+            !(token is null) &&
             token.Length >= TokenParams.MinTokenSize &&
             token.Length <= TokenParams.MaxTokenSize &&
             IsValidTokenInternal(token);

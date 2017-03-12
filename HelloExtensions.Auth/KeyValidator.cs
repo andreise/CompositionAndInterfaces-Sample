@@ -18,7 +18,7 @@ namespace HelloExtensions.Auth
         }
 
         public static bool IsValidKey(byte[] key) =>
-            key != null &&
+            !(key is null) &&
             key.Length > 0 &&
             KeySizes.Items.Contains((KeySize)key.Length) &&
             IsValidKeyInternal(key);
