@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HelloExtensions.ProjectA.Auth\HelloExtensions.ProjectA.Auth.csproj" />
+    <ProjectReference Include="..\HelloExtensions.ProjectB.Auth\HelloExtensions.ProjectB.Auth.csproj" />
+  </ItemGroup>
+
+</Project>
