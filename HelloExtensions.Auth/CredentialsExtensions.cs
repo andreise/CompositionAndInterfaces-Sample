@@ -22,43 +22,33 @@ namespace HelloExtensions.Auth
 
         public static bool IsValid(this IAuthCredentials credentials)
         {
-            if (credentials is null)
+            switch (credentials)
             {
-                //throw new ArgumentNullException(nameof(credentials));
-                return false;
-            }
-
-            {
-                var credentialInfoEx = credentials as ICredentialInfoEx;
-                if (!(credentialInfoEx is null))
+                case ICredentialInfoEx credentialInfoEx:
                     return credentialInfoEx.IsValid();
-            }
 
-            {
-                var credentialInfo = credentials as ICredentialInfo;
-                if (!(credentialInfo is null))
+                case ICredentialInfo credentialInfo:
                     return credentialInfo.IsValid();
-            }
 
-            {
-                var credentialUser = credentials as ICredentialUser;
-                if (!(credentialUser is null))
+                case ICredentialUser credentialUser:
                     return credentialUser.IsValid();
-            }
 
-            {
-                var credentialToken = credentials as ICredentialToken;
-                if (!(credentialToken is null))
+                case ICredentialToken credentialToken:
                     return credentialToken.IsValid();
-            }
 
-            //throw new ArgumentException(
-            //    FormattableString.Invariant(
-            //        $"Specified {nameof(IAuthCredentials)} implementation not supported."
-            //    ),
-            //    nameof(credentials)
-            //);
-            return false;
+                case null:
+                    //throw new ArgumentNullException(nameof(credentials));
+                    return false;
+
+                default:
+                    //throw new ArgumentException(
+                    //    FormattableString.Invariant(
+                    //        $"Specified {nameof(IAuthCredentials)} implementation not supported."
+                    //    ),
+                    //    nameof(credentials)
+                    //);
+                    return false;
+            }
         }
     }
 }
